@@ -134,7 +134,7 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
       <StatusBar
         animated={true}
         backgroundColor={theme.background}
-        barStyle={theme?.name === 'dark'? 'dark-content': 'light-content'}
+        barStyle={theme? theme?.name === 'dark'? 'light-content': 'dark-content':'default'}
         showHideTransition='fade'
         hidden={false}
       />
