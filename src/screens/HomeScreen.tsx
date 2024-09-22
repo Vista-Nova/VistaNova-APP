@@ -1,12 +1,45 @@
 import React from 'react';
 import { View, ScrollView, SafeAreaView, Text, StyleSheet, Dimensions } from 'react-native';
 import { LineChart, ProgressChart } from 'react-native-chart-kit';
+import { useLocale } from '../locale/index';
+import { useTheme } from '../theme/index';
+import { ThemeButton, LocaleButton } from '../components/buttons';
 
-export default function HomeScreen() {
+const HomeScreen = () => {
+  const { theme } = useTheme();
+  const { locale } = useLocale();
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.background
+    },
+    content: {
+      flex: 1,
+      marginTop: '45%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      bottom: '10%'
+    },
+    title: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      marginBottom: 20,
+      color: theme.text
+    },
+    charts: {
+    },
+    chart1: {
+      flexDirection: 'row'
+    }
+  });
+  
   return (
     <ScrollView style={styles.container}>
+      <ThemeButton />
+      <LocaleButton />
       <View style={styles.content}>
-        <Text style={styles.title}>Dashboard</Text>
+        <Text style={styles.title}>{locale.home.title}</Text>
         <View style={styles.charts}>
           <View style={styles.chart1}>
             <ProgressChart
@@ -81,25 +114,4 @@ export default function HomeScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  content: {
-    flex: 1,
-    marginTop: '45%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    bottom: '10%'
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  charts: {
-  },
-  chart1: {
-    flexDirection: 'row'
-  }
-});
+export default HomeScreen;

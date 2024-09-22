@@ -19,15 +19,16 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.gustavofalcao1.VistaNovaAppdev"
+      "package": "com.gustavofalcao1.VistaNovaApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "702e9395-de8f-4437-83b8-d4bf2dbe2e76"
+        "projectId": "71a5eef5-317f-4f74-beb9-88547fa9e697"
       }
-    }
+    },
+    "owner": "vistanova"
   }
 }

@@ -1,6 +1,7 @@
 const light = {
   name: "light",
-  background: "#fff",
+  background: "#edf4f5",
+  tabBackground: "#fff",
   primary: "#ff6347",
   text: "#000",
   textDk: "#7a7a7a",

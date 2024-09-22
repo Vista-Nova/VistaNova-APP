@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View, Dimensions, Image } from "react-native";
+import { View, Dimensions, StyleSheet } from "react-native";
+import { Svg, Path } from "react-native-svg";
+import { scale } from "react-native-size-scaling";
+import { Ionicons } from '@expo/vector-icons';
 import Home from "../screens/HomeScreen";
 import Account from "../screens/AccountScreen";
 import Simulators from "../screens/SimulatorsScreen";
 import { getPathDown } from "../components/curve";
-import { Svg, Path } from "react-native-svg";
-import { scale } from "react-native-size-scaling";
-import { Ionicons } from '@expo/vector-icons';
+import { useLocale } from '../locale/index';
+import { useTheme } from '../theme/index';
+import { ThemeButton, LocaleButton } from '../components/buttons';
 
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
   const [maxWidth, setMaxWidth] = useState(Dimensions.get("window").width);
   const returnpathDown = getPathDown(maxWidth, 60, 50);
+  const { theme } = useTheme();
+  const { locale } = useLocale();
 
   return (
     <Tab.Navigator
@@ -34,15 +39,15 @@ export default function BottomTabNavigator() {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: theme.primary,
+        tabBarInactiveTintColor: theme.textDk,
         tabBarStyle: {
           backgroundColor: "transparent",
           borderTopWidth: 0,
           position: "absolute",
           elevation: 0,
         },
-        headerShown: false,
+        headerShown: false
       })}
     >
       <Tab.Screen
@@ -52,7 +57,7 @@ export default function BottomTabNavigator() {
           headerShown: false,
           tabBarItemStyle: {
             margin: 0,
-            backgroundColor: "white",
+            backgroundColor: theme.tabBackground,
           },
           tabBarLabel: () => <></>,
         }}
@@ -75,7 +80,7 @@ export default function BottomTabNavigator() {
                 alignItems: "center",
                 height: 56,
                 width: 56,
-                backgroundColor: "white",
+                backgroundColor: theme.tabBackground,
                 borderRadius: 35,
               }}
             >
@@ -85,7 +90,7 @@ export default function BottomTabNavigator() {
           tabBarLabel: () => (
             <View>
               <Svg width={maxWidth} height={scale(60)}>
-                <Path fill={"white"} {...{ d: returnpathDown }} />
+                <Path fill={theme.tabBackground} {...{ d: returnpathDown }} />
               </Svg>
             </View>
           ),
@@ -98,7 +103,7 @@ export default function BottomTabNavigator() {
           headerShown: false,
           tabBarItemStyle: {
             margin: 0,
-            backgroundColor: "white",
+            backgroundColor: theme.tabBackground,
           },
           tabBarLabel: () => <></>,
         }}

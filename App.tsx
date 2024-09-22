@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ThemeProvider } from './src/theme/index';
@@ -11,6 +12,7 @@ import Register from './src/screens/auth/register';
 const Stack = createStackNavigator();
 
 const App = ()  => {
+
   return (
     <ThemeProvider>
       <LocaleProvider>

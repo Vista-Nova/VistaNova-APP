@@ -34,5 +34,23 @@
     "button": "Continuar",
     "ask": "Já tem uma conta?",
     "link": "Fazer login"
+  },
+  "home": {
+    "title": "Dashboard"
+  },
+  "simulators": {
+    "title": "Simulador de Créditos",
+    "valueInput": "Digite o valor do crédito",
+    "termInput": "Digite o prazo (meses)",
+    "buttonText": "Simular",
+    "resultLog": "Simulação de crédito aprovada: ",
+    "currency": "€"
+  },
+  "account": {
+    "title": "Minha Conta",
+    "name": "Nome: ",
+    "testName": "João Silva",
+    "mail": "Email: ",
+    "testMail": "joao.silva@email.pt"
   }
 }

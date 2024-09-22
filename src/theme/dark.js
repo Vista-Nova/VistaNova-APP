@@ -1,6 +1,7 @@
 const dark = {
   name: "dark",
-  background: "#18191c",
+  background: "#22231c",
+  tabBackground: "#12131c",
   primary: "#ff6347",
   text: "#FFF",
   textDk: "#7a7a7a",

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity, StatusBar } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../navigation/RootStackParams';
@@ -131,6 +131,13 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <StatusBar
+        animated={true}
+        backgroundColor={theme.background}
+        barStyle={theme?.name === 'dark'? 'dark-content': 'light-content'}
+        showHideTransition='fade'
+        hidden={false}
+      />
       <ThemeButton />
       <LocaleButton />
       <Carousel
