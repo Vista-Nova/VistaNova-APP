@@ -1,0 +1,38 @@
+{
+  "name": "Português",
+  "iso": "pt",
+  "welcome": {
+    "slider1": {
+      "title": "Bem-vindo à Gestão de Créditos",
+      "text": "Gerencie seus créditos de maneira simples e eficiente."
+    },
+    "slider2": {
+      "title": "Simule seus Créditos",
+      "text": "Utilize nosso simulador para descobrir as melhores opções de crédito."
+    },
+    "slider3": {
+      "title": "Acompanhe seu Progresso",
+      "text": "Visualize gráficos e acompanhe o andamento dos seus créditos."
+    },
+    "button": "Criar uma conta",
+    "ask": "Já tem uma conta?",
+    "link": "Fazer login"
+  },
+  "login": {
+    "title": "Entrar em sua conta",
+    "username": "E-mail",
+    "password": "Palavra-passe",
+    "button": "Entrar",
+    "ask": "Ainda não tem uma conta?",
+    "link": "Criar uma conta"
+  },
+  "register": {
+    "title": "Criar uma conta",
+    "username": "E-mail",
+    "password": "Palavra-passe",
+    "repassword": "Repita Palavra-passe",
+    "button": "Continuar",
+    "ask": "Já tem uma conta?",
+    "link": "Fazer login"
+  }
+}

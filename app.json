@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "VistaNova-App-dev",
-    "slug": "VistaNova-App-dev",
-    "version": "1.0.0",
+    "name": "VistaNova-APP",
+    "slug": "VistaNova-APP",
+    "version": "0.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -18,10 +18,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.gustavofalcao1.VistaNovaAppdev"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "702e9395-de8f-4437-83b8-d4bf2dbe2e76"
+      }
     }
   }
 }
