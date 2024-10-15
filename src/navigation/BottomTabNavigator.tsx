@@ -10,7 +10,6 @@ import Simulators from "../screens/SimulatorsScreen";
 import { getPathDown } from "../components/curve";
 import { useLocale } from '../locale/index';
 import { useTheme } from '../theme/index';
-import { ThemeButton, LocaleButton } from '../components/buttons';
 
 const Tab = createBottomTabNavigator();
 

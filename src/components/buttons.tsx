@@ -27,6 +27,24 @@ export const BackButton: React.FC<Props> = ({ event }) => {
   )
 }
 
+export const LogoutButton: React.FC<Props> = ({ event }) => {
+  const { theme } = useTheme();
+
+  return(
+    <TouchableOpacity 
+      style={{
+        position: 'absolute',
+        top: 44,
+        left: 14,
+        zIndex: 999
+      }} 
+      onPress={() => event()}
+    >
+      <Ionicons name="log-out-outline" size={18} color={theme.text} />
+    </TouchableOpacity>
+  )
+}
+
 export const ThemeButton = () => {
   const { theme, toggleTheme } = useTheme();
 

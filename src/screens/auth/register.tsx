@@ -29,7 +29,7 @@ const Register: React.FC<Props> = ({ navigation }) => {
 
     setUser(data)
     setIsAuth(true)
-    navigation.navigate("Dashboard")
+    navigation.navigate("Form")
   }
   
   const styles = StyleSheet.create({

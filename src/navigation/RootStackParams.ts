@@ -7,4 +7,6 @@ export type RootStackParamList = {
   Home: undefined;
   Simulador: undefined;
   MinhaConta: undefined;
+  Form: undefined;
+  Resume: undefined;
 };
