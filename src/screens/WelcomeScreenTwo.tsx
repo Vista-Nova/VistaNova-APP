@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity, StatusBar } from 'react-native';
+import { View, StyleSheet, Image, Dimensions, TouchableOpacity, StatusBar } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../navigation/RootStackParams';
 import { useLocale } from '../locale/index';
 import { useTheme } from '../theme/index';
 import { ThemeButton, LocaleButton } from '../components/buttons';
+import { Txt } from '../components/texts';
 
 const { width } = Dimensions.get('window');
 
@@ -146,8 +147,8 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
         renderItem={({ item }) => (
           <View style={styles.slide}>
             <Image source={item.image} style={styles.image} />
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.text}>{item.text}</Text>
+            <Txt style={styles.title}>{item.title}</Txt>
+            <Txt style={styles.text}>{item.text}</Txt>
           </View>
         )}
         width={width}
@@ -162,17 +163,17 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
       <View style={styles.action}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.replace('FormOne')}
+          onPress={() => navigation.replace('Form')}
         >
-          <Text style={styles.buttonText}>Continue</Text>
+          <Txt style={styles.buttonText}>Continue</Txt>
         </TouchableOpacity>
         <View style={styles.footer}>
-          <Text style={styles.ask}>Termos e e Condições</Text>
+          <Txt style={styles.ask}>Termos e e Condições</Txt>
           <TouchableOpacity
             style={styles.link}
             onPress={() => navigation.replace('Login')}
           >
-            <Text style={styles.linkText}>Carregue Aqui</Text>
+            <Txt style={styles.linkText}>Carregue Aqui</Txt>
           </TouchableOpacity>
         </View>
       </View>

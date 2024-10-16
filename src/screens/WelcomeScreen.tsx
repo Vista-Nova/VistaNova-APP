@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity, StatusBar } from 'react-native';
+import { View, StyleSheet, Image, Dimensions, TouchableOpacity, StatusBar } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../navigation/RootStackParams';
 import { useLocale } from '../locale/index';
 import { useTheme } from '../theme/index';
 import { ThemeButton, LocaleButton } from '../components/buttons';
+import { Txt } from '../components/texts';
 
 const { width } = Dimensions.get('window');
 
@@ -131,13 +132,6 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar
-        animated={true}
-        backgroundColor={theme.background}
-        barStyle={theme? theme?.name === 'dark'? 'light-content': 'dark-content':'default'}
-        showHideTransition='fade'
-        hidden={false}
-      />
       <ThemeButton />
       <LocaleButton />
       <Carousel
@@ -146,8 +140,8 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
         renderItem={({ item }) => (
           <View style={styles.slide}>
             <Image source={item.image} style={styles.image} />
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.text}>{item.text}</Text>
+            <Txt style={styles.title}>{item.title}</Txt>
+            <Txt style={styles.text}>{item.text}</Txt>
           </View>
         )}
         width={width}
@@ -164,15 +158,15 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
           style={styles.button}
           onPress={() => navigation.replace('Register')}
         >
-          <Text style={styles.buttonText}>{locale.welcome.button}</Text>
+          <Txt style={styles.buttonText}>{locale.welcome.button}</Txt>
         </TouchableOpacity>
         <View style={styles.footer}>
-          <Text style={styles.ask}>{locale.welcome.ask}</Text>
+          <Txt style={styles.ask}>{locale.welcome.ask}</Txt>
           <TouchableOpacity
             style={styles.link}
             onPress={() => navigation.replace('Login')}
           >
-            <Text style={styles.linkText}>{locale.welcome.link}</Text>
+            <Txt style={styles.linkText}>{locale.welcome.link}</Txt>
           </TouchableOpacity>
         </View>
       </View>

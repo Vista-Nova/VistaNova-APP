@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../navigation/RootStackParams';
 import { BackButton } from '../../components/buttons';
 import { useLocale } from '../../locale/index';
 import { useTheme } from '../../theme/index';
 import { ThemeButton, LocaleButton } from '../../components/buttons';
+import { Txt } from '../../components/texts';
 
 
 type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
@@ -91,7 +92,7 @@ const Login: React.FC<Props> = ({ navigation })  =>{
       <ThemeButton />
       <LocaleButton />
       <BackButton event={() => navigation.navigate("Welcome")} />
-      <Text style={styles.title}>{locale.login.title}</Text>
+      <Txt style={styles.title}>{locale.login.title}</Txt>
       <TextInput
         style={styles.input}
         placeholderTextColor={theme.textDk}
@@ -112,15 +113,15 @@ const Login: React.FC<Props> = ({ navigation })  =>{
         onChangeText={setPassword}
       />
       <TouchableOpacity style={styles.button} onPress={onLoginPress}>
-        <Text style={styles.buttonText}>{locale.login.button}</Text>
+        <Txt style={styles.buttonText}>{locale.login.button}</Txt>
       </TouchableOpacity>
       <View style={styles.footer}>
-        <Text style={styles.ask}>{locale.login.ask}</Text>
+        <Txt style={styles.ask}>{locale.login.ask}</Txt>
         <TouchableOpacity
           style={styles.link}
           onPress={() => navigation.replace('Login')}
         >
-          <Text style={styles.linkText}>{locale.login.link}</Text>
+          <Txt style={styles.linkText}>{locale.login.link}</Txt>
         </TouchableOpacity>
       </View>
     </View>

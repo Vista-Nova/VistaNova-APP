@@ -1,7 +1,7 @@
+// @0000
 import React, { useState } from 'react';
 import { 
   View, 
-  Text, 
   TextInput, 
   TouchableOpacity, 
   Switch, 
@@ -14,7 +14,9 @@ import { Picker } from '@react-native-picker/picker';
 import { useLocale } from '../../locale/index';
 import { useTheme } from '../../theme/index';
 import { ThemeButton, LocaleButton, BackButton } from '../../components/buttons';
+import ProgressBar from '../../components/progressBar';
 import { Ionicons } from '@expo/vector-icons';
+import { Txt } from '../../components/texts';
 
 interface Props {
   formData: any;
@@ -34,6 +36,7 @@ const FormThree: React.FC<Props> = ({ formData, setFormData, onPressBack, onPres
   const [isSwitchOn, setIsSwitchOn] = useState(false);
   const [selectedOption, setSelectedOption] = useState('java');
   const pan = useState(new Animated.ValueXY())[0];
+  const [progress, setProgress] = useState(75);
 
   // Draggable setup with PanResponder
   const panResponder = PanResponder.create({
@@ -168,8 +171,9 @@ const FormThree: React.FC<Props> = ({ formData, setFormData, onPressBack, onPres
       <ThemeButton />
       <LocaleButton />
       <BackButton event={() => onPressBack()} />
-      <Text style={styles.title}>Terceira Form</Text>
-      <Text style={styles.ask}>Como poderias responder a essa terceira pergunta?</Text>
+      <ProgressBar progress={progress} />
+      <Txt style={styles.title}>Terceira Form</Txt>
+      <Txt style={styles.ask}>Como poderias responder a essa terceira pergunta?</Txt>
       <TextInput
         style={styles.input}
         placeholderTextColor={theme.textDk}
@@ -183,10 +187,10 @@ const FormThree: React.FC<Props> = ({ formData, setFormData, onPressBack, onPres
       {/* Radio Buttons */}
       <View style={styles.radioContainer}>
         <TouchableOpacity onPress={() => setRadioValue('option1')}>
-          <Text style={radioValue === 'option1' ? styles.radioSelected : styles.radio}>Opção 1</Text>
+          <Txt style={radioValue === 'option1' ? styles.radioSelected : styles.radio}>Opção 1</Txt>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setRadioValue('option2')}>
-          <Text style={radioValue === 'option2' ? styles.radioSelected : styles.radio}>Opção 2</Text>
+          <Txt style={radioValue === 'option2' ? styles.radioSelected : styles.radio}>Opção 2</Txt>
         </TouchableOpacity>
       </View>
 
@@ -201,13 +205,13 @@ const FormThree: React.FC<Props> = ({ formData, setFormData, onPressBack, onPres
           size={24} 
           color={checked ? '#4caf50' : '#757575'} 
         />
-        <Text style={styles.labelBox}>
+        <Txt style={styles.labelBox}>
           {checked ? 'Checked' : 'Unchecked'}
-        </Text>
+        </Txt>
       </TouchableOpacity>
 
       {/* Slider */}
-      <Text style={styles.label}>Valor do Slider: {sliderValue}</Text>
+      <Txt style={styles.label}>Valor do Slider: {sliderValue}</Txt>
       <Slider
         style={{ width: 200, height: 40 }}
         minimumValue={0}
@@ -219,7 +223,7 @@ const FormThree: React.FC<Props> = ({ formData, setFormData, onPressBack, onPres
 
       {/* Switch */}
       <View style={styles.row}>
-        <Text style={styles.label}>Switch</Text>
+        <Txt style={styles.label}>Switch</Txt>
         <Switch value={isSwitchOn} onValueChange={setIsSwitchOn} />
       </View>
 
@@ -239,18 +243,18 @@ const FormThree: React.FC<Props> = ({ formData, setFormData, onPressBack, onPres
         {...panResponder.panHandlers}
         style={[styles.box, { transform: [{ translateX: pan.x }, { translateY: pan.y }] }]}
       >
-        <Text style={styles.boxText}>Arraste-me!</Text>
+        <Txt style={styles.boxText}>Arraste-me!</Txt>
       </Animated.View>
       <TouchableOpacity style={styles.button} onPress={onFormThreePress}>
-        <Text style={styles.buttonText}>Calcular...</Text>
+        <Txt style={styles.buttonText}>Calcular...</Txt>
       </TouchableOpacity>
       {/* <View style={styles.footer}>
-        <Text style={styles.ask}>{locale.login.ask}</Text>
+        <Txt style={styles.ask}>{locale.login.ask}</Txt>
         <TouchableOpacity
           style={styles.link}
           onPress={() => navigation.replace('FormThree')}
         >
-          <Text style={styles.linkText}>{locale.login.link}</Text>
+          <Txt style={styles.linkText}>{locale.login.link}</Txt>
         </TouchableOpacity>
       </View> */}
     </View>

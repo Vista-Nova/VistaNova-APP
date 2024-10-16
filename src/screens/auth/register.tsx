@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../navigation/RootStackParams';
 import { BackButton } from '../../components/buttons';
 import { useLocale } from '../../locale/index';
 import { useTheme } from '../../theme/index';
 import { ThemeButton, LocaleButton } from '../../components/buttons';
+import { Txt } from '../../components/texts';
 
 type RegisterScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
@@ -88,7 +89,7 @@ const Register: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <BackButton event={() => navigation.navigate("Welcome")} />
-      <Text style={styles.title}>{locale.register.title}</Text>
+      <Txt style={styles.title}>{locale.register.title}</Txt>
       <TextInput
         style={styles.input}
         placeholderTextColor={theme.textDk}
@@ -121,15 +122,15 @@ const Register: React.FC<Props> = ({ navigation }) => {
         onChangeText={setPassword}
       />
       <TouchableOpacity style={styles.button} onPress={onRegisterPress}>
-        <Text style={styles.buttonText}>{locale.register.button}</Text>
+        <Txt style={styles.buttonText}>{locale.register.button}</Txt>
       </TouchableOpacity>
       <View style={styles.footer}>
-        <Text style={styles.ask}>{locale.register.ask}</Text>
+        <Txt style={styles.ask}>{locale.register.ask}</Txt>
         <TouchableOpacity
           style={styles.link}
           onPress={() => navigation.replace('Login')}
         >
-          <Text style={styles.linkText}>{locale.register.link}</Text>
+          <Txt style={styles.linkText}>{locale.register.link}</Txt>
         </TouchableOpacity>
       </View>
     </View>

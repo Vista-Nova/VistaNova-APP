@@ -1,7 +1,10 @@
+// @0000
+// @0002
 import React, { useState } from 'react';
 import { 
-  View, 
-  Text, 
+  View,
+  ScrollView,
+  SafeAreaView,
   TextInput, 
   TouchableOpacity, 
   Switch, 
@@ -20,6 +23,7 @@ import { useTheme } from '../../theme/index';
 import { ThemeButton, LocaleButton, LogoutButton } from '../../components/buttons';
 import ProgressBar from '../../components/progressBar';
 import { Ionicons } from '@expo/vector-icons';
+import { Txt } from '../../components/texts';
 
 interface Props {
   formData: any;
@@ -66,6 +70,7 @@ const FormOne: React.FC<Props> = ({ formData, setFormData, onPressBack, onPressN
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: theme.background,
+      paddingHorizontal: 20,
     },
     title: {
       fontSize: 24,
@@ -170,104 +175,97 @@ const FormOne: React.FC<Props> = ({ formData, setFormData, onPressBack, onPressN
   });
 
   return (
-    <KeyboardAvoidingView 
-      style={{ flex: 1 }} 
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'} // Adapta o comportamento para iOS e Android
-    >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-        <ThemeButton />
-        <LocaleButton />
-        <LogoutButton event={() => onPressBack()} />
-        <ProgressBar progress={progress} />
-        <Text style={styles.title}>Primeira Form</Text>
-        <Text style={styles.ask}>Como poderias responder a essa primeira pergunta?</Text>
-        <TextInput
-          style={styles.input}
-          placeholderTextColor={theme.textDk}
-          placeholder={"Resposta"}
-          keyboardType="default"
-          autoComplete="off"
-          value={text}
-          onChangeText={setText}
-        />
+    <View style={styles.container}>
+      <ThemeButton />
+      <LocaleButton />
+      <LogoutButton event={() => onPressBack()} />
+      <ProgressBar progress={progress} />
+      <Txt style={styles.title}>Primeira Form</Txt>
+      <Txt style={styles.ask}>Como poderias responder a essa primeira pergunta?</Txt>
+      <TextInput
+        style={styles.input}
+        placeholderTextColor={theme.textDk}
+        placeholder={"Resposta"}
+        keyboardType="default"
+        autoComplete="off"
+        value={text}
+        onChangeText={setText}
+      />
 
-        {/* Radio Buttons */}
-        <View style={styles.radioContainer}>
-          <TouchableOpacity onPress={() => setRadioValue('option1')}>
-            <Text style={radioValue === 'option1' ? styles.radioSelected : styles.radio}>Opção 1</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => setRadioValue('option2')}>
-            <Text style={radioValue === 'option2' ? styles.radioSelected : styles.radio}>Opção 2</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* CheckBox */}
-        <TouchableOpacity 
-        style={styles.checkboxContainer} 
-        onPress={toggleCheckbox}
-        >
-          <Ionicons 
-            style={styles.iconBox}
-            name={checked ? 'checkmark-circle' : 'ellipse-outline'} 
-            size={24} 
-            color={checked ? '#4caf50' : '#757575'} 
-          />
-          <Text style={styles.labelBox}>
-            {checked ? 'Checked' : 'Unchecked'}
-          </Text>
+      {/* Radio Buttons */}
+      <View style={styles.radioContainer}>
+        <TouchableOpacity onPress={() => setRadioValue('option1')}>
+          <Txt style={radioValue === 'option1' ? styles.radioSelected : styles.radio}>Opção 1</Txt>
         </TouchableOpacity>
-
-        {/* Slider */}
-        <Text style={styles.label}>Valor do Slider: {sliderValue}</Text>
-        <Slider
-          style={{ width: 200, height: 40 }}
-          minimumValue={0}
-          maximumValue={100}
-          step={1}
-          value={sliderValue}
-          onValueChange={setSliderValue}
-        />
-
-        {/* Switch */}
-        <View style={styles.row}>
-          <Text style={styles.label}>Switch</Text>
-          <Switch value={isSwitchOn} onValueChange={setIsSwitchOn} />
-        </View>
-
-        {/* Picker */}
-        <Picker
-          selectedValue={selectedOption}
-          style={styles.picker}
-          onValueChange={(itemValue) => setSelectedOption(itemValue)}
-        >
-          <Picker.Item label="Java" value="java" />
-          <Picker.Item label="JavaScript" value="javascript" />
-          <Picker.Item label="Python" value="python" />
-        </Picker>
-
-        {/* Draggable Box */}
-        <Animated.View
-          {...panResponder.panHandlers}
-          style={[styles.box, { transform: [{ translateX: pan.x }, { translateY: pan.y }] }]}
-        >
-          <Text style={styles.boxText}>Arraste-me!</Text>
-        </Animated.View>
-        <TouchableOpacity style={styles.button} onPress={onFormOnePress}>
-          <Text style={styles.buttonText}>Continue 2</Text>
+        <TouchableOpacity onPress={() => setRadioValue('option2')}>
+          <Txt style={radioValue === 'option2' ? styles.radioSelected : styles.radio}>Opção 2</Txt>
         </TouchableOpacity>
-        {/* <View style={styles.footer}>
-          <Text style={styles.ask}>{locale.login.ask}</Text>
-          <TouchableOpacity
-            style={styles.link}
-            onPress={() => navigation.replace('FormOne')}
-          >
-            <Text style={styles.linkText}>{locale.login.link}</Text>
-          </TouchableOpacity>
-        </View> */}
       </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+
+      {/* CheckBox */}
+      <TouchableOpacity 
+      style={styles.checkboxContainer} 
+      onPress={toggleCheckbox}
+      >
+        <Ionicons 
+          style={styles.iconBox}
+          name={checked ? 'checkmark-circle' : 'ellipse-outline'} 
+          size={24} 
+          color={checked ? '#4caf50' : '#757575'} 
+        />
+        <Txt style={styles.labelBox}>
+          {checked ? 'Checked' : 'Unchecked'}
+        </Txt>
+      </TouchableOpacity>
+
+      {/* Slider */}
+      <Txt style={styles.label}>Valor do Slider: {sliderValue}</Txt>
+      <Slider
+        style={{ width: 200, height: 40 }}
+        minimumValue={0}
+        maximumValue={100}
+        step={1}
+        value={sliderValue}
+        onValueChange={setSliderValue}
+      />
+
+      {/* Switch */}
+      <View style={styles.row}>
+        <Txt style={styles.label}>Switch</Txt>
+        <Switch value={isSwitchOn} onValueChange={setIsSwitchOn} />
+      </View>
+
+      {/* Picker */}
+      <Picker
+        selectedValue={selectedOption}
+        style={styles.picker}
+        onValueChange={(itemValue) => setSelectedOption(itemValue)}
+      >
+        <Picker.Item label="Java" value="java" />
+        <Picker.Item label="JavaScript" value="javascript" />
+        <Picker.Item label="Python" value="python" />
+      </Picker>
+
+      {/* Draggable Box */}
+      <Animated.View
+        {...panResponder.panHandlers}
+        style={[styles.box, { transform: [{ translateX: pan.x }, { translateY: pan.y }] }]}
+      >
+        <Txt style={styles.boxText}>Arraste-me!</Txt>
+      </Animated.View>
+      <TouchableOpacity style={styles.button} onPress={onFormOnePress}>
+        <Txt style={styles.buttonText}>Continue 2</Txt>
+      </TouchableOpacity>
+      {/* <View style={styles.footer}>
+        <TeTxtxt style={styles.ask}>{locale.login.ask}</TeTxtxt>
+        <TouchableOpacity
+          style={styles.link}
+          onPress={() => navigation.replace('FormOne')}
+        >
+          <Txt style={styles.linkText}>{locale.login.link}</Txt>
+        </TouchableOpacity>
+      </View> */}
+    </View>
   );
 }
 

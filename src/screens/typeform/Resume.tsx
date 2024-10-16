@@ -1,3 +1,4 @@
+// @0000
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -5,7 +6,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RootStackParamList } from '../../navigation/RootStackParams';
 import { useTheme } from '../../theme/index';
 import { ThemeButton, LocaleButton } from '../../components/buttons';
+import ProgressBar from '../../components/progressBar';
 import Loading from '../../components/loading';
+import { Txt } from '../../components/texts';
 
 type ResumeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Resume'>;
 
@@ -27,6 +30,7 @@ const Resume: React.FC<Props> = ({ navigation }) => {
     doneMessage: 'Pronto!',
     isLoaded: false
   });
+  const [progress, setProgress] = useState(100);
 
   const loadData = async () => {
     try {
@@ -120,21 +124,22 @@ const Resume: React.FC<Props> = ({ navigation }) => {
       <View style={styles.container}>
         <ThemeButton />
         <LocaleButton />
-        <Text style={styles.title}>Resume</Text>
-        <Text style={styles.title}>{formData?.one}</Text>
-        <Text style={styles.title}>{formData?.two}</Text>
-        <Text style={styles.title}>{formData?.three}</Text>
-        <Text style={styles.title}>{formData?.stage}</Text>
+        <ProgressBar progress={progress} />
+        <Txt style={styles.title}>Resume</Txt>
+        <Txt style={styles.title}>{formData.one}</Txt>
+        <Txt style={styles.title}>{formData?.two}</Txt>
+        <Txt style={styles.title}>{formData?.three}</Txt>
+        <Txt style={styles.title}>{formData?.stage}</Txt>
         <TouchableOpacity style={styles.button} onPress={onPressContinue}>
-          <Text style={styles.buttonText}>Confirmar</Text>
+          <Txt style={styles.buttonText}>Confirmar</Txt>
         </TouchableOpacity>
         <View style={styles.footer}>
-          <Text style={styles.ask}>Não concorda com os dados inseridos ou deja alterar alguma informação, antes de seguir?</Text>
+          <Txt style={styles.ask}>Não concorda com os dados inseridos ou deja alterar alguma informação, antes de seguir?</Txt>
           <TouchableOpacity
             style={styles.link}
             onPress={() => navigation.replace('Form')}
           >
-            <Text style={styles.linkText}>Modificar respostas.</Text>
+            <Txt style={styles.linkText}>Modificar respostas.</Txt>
           </TouchableOpacity>
         </View>
       </View>

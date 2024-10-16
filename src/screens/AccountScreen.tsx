@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../navigation/RootStackParams';
 import { useLocale } from '../locale/index';
 import { useTheme } from '../theme/index';
 
 import { ThemeButton, LocaleButton, LogoutButton } from '../components/buttons';
+import { Txt } from '../components/texts';
 type WelcomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Welcome'>;
 
 interface Props {
@@ -38,10 +39,10 @@ const AccountScreen: React.FC<Props> = ({ navigation }) => {
     <View style={styles.container}>
       <ThemeButton />
       <LocaleButton />
-      <Text style={styles.title}>{locale.account.title}</Text>
+      <Txt style={styles.title}>{locale.account.title}</Txt>
       {/* Exibir informações do usuário simuladas */}
-      <Text style={styles.text}>{locale.account.name}{locale.account.testName}</Text>
-      <Text style={styles.text}>{locale.account.mail}{locale.account.testMail}</Text>
+      <Txt style={styles.text}>{locale.account.name}{locale.account.testName}</Txt>
+      <Txt style={styles.text}>{locale.account.mail}{locale.account.testMail}</Txt>
       <LogoutButton event={() => navigation.navigate("Login")}  />
     </View>
   );

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { useLocale } from '../locale/index';
 import { useTheme } from '../theme/index';
 import { ThemeButton, LocaleButton } from '../components/buttons';
+import { Txt } from '../components/texts';
 
 const SimulatorsScreen = () => {
   const [creditAmount, setCreditAmount] = useState('');
@@ -56,7 +57,7 @@ const SimulatorsScreen = () => {
     <View style={styles.container}>
       <ThemeButton />
       <LocaleButton />
-      <Text style={styles.title}>{locale.simulators.title}</Text>
+      <Txt style={styles.title}>{locale.simulators.title}</Txt>
       <TextInput
         style={styles.input}
         placeholderTextColor={theme.textDk}
@@ -74,7 +75,7 @@ const SimulatorsScreen = () => {
         onChangeText={setTerm}
       />
       <TouchableOpacity style={styles.button} onPress={simulateCredit}>
-        <Text style={styles.buttonText}>{locale.simulators.buttonText}</Text>
+        <Txt style={styles.buttonText}>{locale.simulators.buttonText}</Txt>
       </TouchableOpacity>
     </View>
   );

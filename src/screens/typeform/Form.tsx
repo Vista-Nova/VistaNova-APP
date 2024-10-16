@@ -1,3 +1,5 @@
+// @0000
+// @0002
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -42,20 +44,24 @@ const Form: React.FC<Props> = ({ navigation }) => {
       console.error('Error loading data', error);
     } finally {
       // Independentemente do que aconteça, definimos isLoaded como true após carregar os dados
-      //setIsLoaded(true);
-      setTimeout(() => {
-        setIsLoaded(true)
-      }, 10000);
+
+      setIsLoaded(true);
+      // @0001
+      // setTimeout(() => {
+      //   setIsLoaded(true)
+      // }, 10000);
     }
   };
   
   const loadLoadingData = () => {
-    setTimeout(() => {
-      setLoadingData({...loadingData, isLoaded: true})
-    }, 9000);
-    setTimeout(() => {
-      setIsLoaded(true)
-    }, 10000);
+    setLoadingData({...loadingData, isLoaded: true})
+    // @0001
+    // setTimeout(() => {
+    //   setLoadingData({...loadingData, isLoaded: true})
+    // }, 9000);
+    // setTimeout(() => {
+    //   setIsLoaded(true)
+    // }, 10000);
   }
 
   const onPressBack = () => {

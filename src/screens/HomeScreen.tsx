@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, ScrollView, SafeAreaView, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, ScrollView, StyleSheet, Dimensions } from 'react-native';
 import { LineChart, ProgressChart } from 'react-native-chart-kit';
 import { useLocale } from '../locale/index';
 import { useTheme } from '../theme/index';
 import { ThemeButton, LocaleButton } from '../components/buttons';
+import { Txt } from '../components/texts';
 
 const HomeScreen = () => {
   const { theme } = useTheme();
@@ -39,7 +40,7 @@ const HomeScreen = () => {
       <ThemeButton />
       <LocaleButton />
       <View style={styles.content}>
-        <Text style={styles.title}>{locale.home.title}</Text>
+        <Txt style={styles.title}>{locale.home.title}</Txt>
         <View style={styles.charts}>
           <View style={styles.chart1}>
             <ProgressChart

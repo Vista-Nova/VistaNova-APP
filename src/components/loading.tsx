@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, StyleSheet, Animated } from 'react-native';
+import { View, StyleSheet, Animated } from 'react-native';
+import { useTheme } from '../theme/index';
+import { Txt } from './texts';
 
 interface Prop {
   loadingData: any;
 }
 
 const Loading: React.FC<Prop> = ({ loadingData }) => {
+  const { theme } = useTheme();
   const [messageIndex, setMessageIndex] = useState(0);
   const opacity = useRef(new Animated.Value(0)).current;
 
@@ -42,33 +45,35 @@ const Loading: React.FC<Prop> = ({ loadingData }) => {
     fadeIn();
   }, []);
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: theme.background,
+    },
+    loadingText: {
+      fontSize: 20,
+      color: theme.textSw,
+      fontWeight: 'bold',
+    },
+  });
+
   return (
     <View style={styles.container}>
       {data?.isLoaded? (
-      <Text style={[styles.loadingText]}>
+      <Txt style={styles.loadingText}>
         {data?.doneMessage}
-      </Text>
+      </Txt>
       ):(
       <Animated.Text style={[styles.loadingText, { opacity }]}>
-        {data?.messages[messageIndex]}
+        <Txt style={[styles.loadingText]}>
+          {data?.messages[messageIndex]}
+        </Txt>
       </Animated.Text>
       )}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f8f9fa',
-  },
-  loadingText: {
-    fontSize: 20,
-    color: '#343a40',
-    fontWeight: 'bold',
-  },
-});
 
 export default Loading;
