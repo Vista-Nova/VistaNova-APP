@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-import { useLocale } from '../locale/index';
-import { useTheme } from '../theme/index';
-import { ThemeButton, LocaleButton } from '../components/buttons';
-import { Txt } from '../components/texts';
+import { useLocale } from '../../locale/index';
+import { useTheme } from '../../theme/index';
+import { ThemeButton, LocaleButton } from '../../components/buttons';
+import { Txt } from '../../components/texts';
 
-const SimulatorsScreen = () => {
+const Services = () => {
   const [creditAmount, setCreditAmount] = useState('');
   const [term, setTerm] = useState('');
   const { theme } = useTheme();
@@ -81,4 +81,4 @@ const SimulatorsScreen = () => {
   );
 }
 
-export default SimulatorsScreen;
+export default Services;

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Image, Dimensions, TouchableOpacity, StatusBar } from 'react-native';
+import { View, StyleSheet, Image, Dimensions, TouchableOpacity, useWindowDimensions } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../navigation/RootStackParams';
 import { useLocale } from '../locale/index';
 import { useTheme } from '../theme/index';
-import { ThemeButton, LocaleButton } from '../components/buttons';
+import { ThemeButton, LocaleButton, BackButton } from '../components/buttons';
 import { Txt } from '../components/texts';
 
 const { width } = Dimensions.get('window');
@@ -20,6 +20,9 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const { theme } = useTheme();
   const { locale } = useLocale();
+
+  const { width, height } = useWindowDimensions();
+
 
   const slides = [
     {
@@ -72,13 +75,12 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
       fontSize: 16,
       color: theme.textDk,
       textAlign: 'center',
-      marginHorizontal: 20,
+      marginHorizontal: 24,
       marginTop: 10,
     },
     pagination: {
       flexDirection: 'row',
-      marginTop: '-10%',
-      marginBottom: '40%',
+      marginBottom: '8%'
     },
     dot: {
       width: 12,
@@ -95,11 +97,9 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
       marginHorizontal: 2,
     },
     action: {
-      flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      position: 'absolute',
-      bottom: 40,
+      marginBottom: '16%'
     },
     button: {
       backgroundColor: theme.primary,
@@ -134,6 +134,7 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
     <View style={styles.container}>
       <ThemeButton />
       <LocaleButton />
+      <BackButton event={() => navigation.navigate("Home")}/>
       <Carousel
         style={styles.carousel}
         data={slides}

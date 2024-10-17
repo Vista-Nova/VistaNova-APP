@@ -4,9 +4,9 @@ import { View, Dimensions, StyleSheet } from "react-native";
 import { Svg, Path } from "react-native-svg";
 import { scale } from "react-native-size-scaling";
 import { Ionicons } from '@expo/vector-icons';
-import Home from "../screens/HomeScreen";
-import Account from "../screens/AccountScreen";
-import Simulators from "../screens/SimulatorsScreen";
+import Dashboard from "../screens/home/dashboard";
+import Account from "../screens/home/settings";
+import Simulators from "../screens/home/services";
 import { getPathDown } from "../components/curve";
 import { useLocale } from '../locale/index';
 import { useTheme } from '../theme/index';
@@ -21,12 +21,12 @@ export default function BottomTabNavigator() {
 
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Dashboard"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName: string;
 
-          if (route.name === 'Home') {
+          if (route.name === 'Dashboard') {
             iconName = focused ? 'stats-chart' : 'stats-chart-outline';
           } else if (route.name === 'Simulators') {
             iconName = focused ? 'calculator' : 'calculator-outline';
@@ -62,8 +62,8 @@ export default function BottomTabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="Dashboard"
+        component={Dashboard}
         options={{
           headerShown: false,
           unmountOnBlur: false,

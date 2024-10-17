@@ -46,6 +46,42 @@ export const LogoutButton: React.FC<Props> = ({ event }) => {
   )
 }
 
+export const HamburgerMenuButton: React.FC<Props> = ({ event }) => {
+  const { theme } = useTheme();
+
+  return(
+    <TouchableOpacity 
+      style={{
+        position: 'absolute',
+        top: 32,
+        right: 24,
+        zIndex: 999
+      }} 
+      onPress={() => event()}
+    >
+      <Ionicons name="menu" size={24} color={theme.text} />
+    </TouchableOpacity>
+  )
+}
+
+export const CloseMenuButton: React.FC<Props> = ({ event }) => {
+  const { theme } = useTheme();
+
+  return(
+    <TouchableOpacity 
+      style={{
+        position: 'absolute',
+        top: 32,
+        right: 24,
+        zIndex: 999
+      }} 
+      onPress={() => event()}
+    >
+      <Ionicons name="close-outline" size={24} color={theme.text} />
+    </TouchableOpacity>
+  )
+}
+
 export const ThemeButton = () => {
   const { theme, toggleTheme } = useTheme();
 

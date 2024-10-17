@@ -7,7 +7,7 @@ import { ThemeProvider } from './src/theme/index';
 import { LocaleProvider } from './src/locale/index';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import WelcomeScreenTwo from './src/screens/WelcomeScreenTwo';
-import BottomTabNavigator from './src/navigation/BottomTabNavigator';
+import Home from './src/navigation/BottomTabNavigator';
 import Login from './src/screens/auth/Login';
 import Register from './src/screens/auth/Register';
 
@@ -24,7 +24,7 @@ const App = ()  => {
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Welcome" screenOptions={{ headerShown: false}}>
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
-            <Stack.Screen name="Dashboard" component={BottomTabNavigator} />
+            <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Form" component={Form} />

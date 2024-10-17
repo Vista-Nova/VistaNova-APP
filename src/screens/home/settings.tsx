@@ -1,19 +1,20 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../navigation/RootStackParams';
-import { useLocale } from '../locale/index';
-import { useTheme } from '../theme/index';
+import { RootStackParamList } from '../../navigation/RootStackParams';
+import { useLocale } from '../../locale/index';
+import { useTheme } from '../../theme/index';
 
-import { ThemeButton, LocaleButton, LogoutButton } from '../components/buttons';
-import { Txt } from '../components/texts';
-type WelcomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Welcome'>;
+import { ThemeButton, LocaleButton, LogoutButton } from '../../components/buttons';
+import { Txt } from '../../components/texts';
+
+type SettingsNavigationProp = StackNavigationProp<RootStackParamList, 'Welcome'>;
 
 interface Props {
-  navigation: WelcomeScreenNavigationProp;
+  navigation: SettingsNavigationProp;
 }
 
-const AccountScreen: React.FC<Props> = ({ navigation }) => {
+const Settings: React.FC<Props> = ({ navigation }) => {
   const { theme } = useTheme();
   const { locale } = useLocale();
 
@@ -49,4 +50,4 @@ const AccountScreen: React.FC<Props> = ({ navigation }) => {
 }
 
 
-export default AccountScreen;
+export default Settings;
